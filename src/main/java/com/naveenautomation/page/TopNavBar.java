@@ -20,7 +20,7 @@ public class TopNavBar extends Page {
 
 	}
 
-	public Page OpenPageByClickOnSideNavBar(TopNavigationBar item) {
+	public Page OpenPageByClickOnTopNavBar(TopNavigationBar item) {
 		List<WebElement> sideBarItems = wd.findElements(By.cssSelector("ul.nav>li"));
 
 		for (WebElement webElement : sideBarItems) {

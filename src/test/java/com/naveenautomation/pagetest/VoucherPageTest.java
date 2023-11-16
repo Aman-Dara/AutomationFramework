@@ -1,0 +1,70 @@
+package com.naveenautomation.pagetest;
+
+import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
+import com.naveenautomation.base.TestBase;
+import com.naveenautomation.page.AccountLoginPage;
+import com.naveenautomation.page.AccountPage;
+import com.naveenautomation.page.SuccessPage;
+import com.naveenautomation.page.VoucherPage;
+
+public class VoucherPageTest extends TestBase {
+
+	private AccountLoginPage accountLoginPage;
+	private VoucherPage voucherPage;
+	private SuccessPage successPage;
+
+	@BeforeMethod
+	public void launchBrowser() {
+		initialisation();
+		accountLoginPage = new AccountLoginPage(wd, false).get();
+	}
+	
+	@Test
+	public void validateIfUserCanPurchaseGiftCertificate() {
+		voucherPage = accountLoginPage.clickOnGiftCertificate();
+		voucherPage.enterDetails("Andreas", "andreas@email.com", "Andreas", "andreas@email.com", "Happy Holidays", "1");
+		voucherPage.clickCheckBox();
+		successPage = (SuccessPage) voucherPage.clickSubmitBtn();
+		Assert.assertEquals(successPage.giftVoucherSuccessMsgText(),
+				"Thank you for purchasing a gift certificate! Once you have completed your order your gift certificate recipient will be sent an e-mail with details how to redeem their gift certificate.", "User not able to purchase Gift Certificate");
+	}
+
+	@Test
+	public void validateWarningWithInvalidRecipientName() {
+		voucherPage = accountLoginPage.clickOnGiftCertificate();
+		voucherPage.enterDetails("", "andreas@email.com", "Andreas", "andreas@email.com", "Happy Holidays", "1");
+		voucherPage.clickCheckBox();
+		voucherPage.clickSubmitBtn();
+		Assert.assertEquals(voucherPage.invalidrecipientsNameWarningText(),
+				"Recipient's Name must be between 1 and 64 characters!", "User not able to purchase Gift Certificate");
+	}
+
+	@Test
+	public void validateWarningWithInvalidRecipientEmail() {
+		voucherPage = accountLoginPage.clickOnGiftCertificate();
+		voucherPage.enterDetails("Andreas", "andreas@email.com", "Andreas", "andreasemail.com", "Happy Holidays", "1");
+		voucherPage.clickCheckBox();
+		voucherPage.clickSubmitBtn();
+		Assert.assertEquals(voucherPage.invalidrecipientsEmailWarningText(),
+				"E-Mail Address does not appear to be valid!", "User not able to purchase Gift Certificate");
+	}
+
+	@Test
+	public void validateWarningIfCheckBoxIsSkipped() {
+		voucherPage = accountLoginPage.clickOnGiftCertificate();
+		voucherPage.enterDetails("", "andreas@email.com", "Andreas", "andreas@email.com", "Happy Holidays", "1");
+		voucherPage.clickSubmitBtn();
+		Assert.assertEquals(voucherPage.giftCertificateWarningText(),
+				"Warning: You must agree that the gift certificates are non-refundable!",
+				"Unsuccessfull Gift Certificate Purchase");
+	}
+
+	@AfterMethod
+	public void quitBrowser() {
+		tearDown();
+	}
+
+}

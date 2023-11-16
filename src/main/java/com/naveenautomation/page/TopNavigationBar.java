@@ -2,13 +2,13 @@ package com.naveenautomation.page;
 
 public enum TopNavigationBar {
 
-	DESKTOPS("Desktops", MacDesktopPage.class),
-	// LAPTOPSANDNOTEBOOKS("Laptops & Notebooks"),
-	COMPONENTS("Components", MonitorsPage.class);
-	//TABLETS("Tablets"),
+	// DESKTOPS("Desktops", MacDesktopPage.class),
+	LAPTOPSANDNOTEBOOKS("Laptops & Notebooks", LaptopsAndNotebooksPage.class),
+	COMPONENTS("Components", MonitorsPage.class), 
+	TABLETS("Tablets", TabletsPage.class),
 	// SOFTWARE("Software"),
 	// PHONESANDPDAS("Phones & PDAs"),
-	// CAMERAS("Cameras"),
+	 CAMERAS("Cameras",CamerasPage.class);
 	// MP3PLAYERS("MP3 Players");
 
 	private String elementName;

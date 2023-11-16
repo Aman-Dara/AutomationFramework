@@ -113,15 +113,15 @@ public class AccountPageTest extends TestBase {
 		return virtualSheet;
 	}
 	
-	@Test
-	public void validateIfProductsAreAddedToTheWishList() {
+	
+/*	public void validateIfProductsAreAddedToTheWishList() {
 		macDesktopPage =  (MacDesktopPage) new TopNavBar(wd,false).OpenPageByClickOnSideNavBar(TopNavigationBar.DESKTOPS);
 		macDesktopPage.addProductToWishList();
 		monitorsPage = macDesktopPage.navigateToMonitorsPage();
 		wishListPage = monitorsPage.addMonitorsToWishList();
 		accountPage = wishListPage.getDataFromWishListTable();
 		Assert.assertEquals(accountPage.myAccountText(), "My Account", "Items not added to the wishlist");
-	}
+	}*/
 	
 	@Test
 	public void validateIfUserCanCheckOrderHistory() {

@@ -19,6 +19,7 @@ public class AccountLoginPage extends Page {
 	private static By alertBanner = By.cssSelector(".alert-danger");
 	private static By passChangeSuccessMessage = By.cssSelector("#account-login>div:first-of-type");
 	private static By newCustRegisterAccountContinueBtn = By.xpath("//a[text()='Continue']");
+	private static By giftCertificates = By.xpath("//a[text()='Gift Certificates']");
 
 	public GeneralPage submitLogin(String email, String password) {
 		((ProxyDriver) wd).sendKeys(emailInput, email);
@@ -26,6 +27,12 @@ public class AccountLoginPage extends Page {
 		((ProxyDriver) wd).click(loginBtn);
 		return this.waitForPageToLoad(AccountPage.class,AccountLoginPage.class);
 	}
+	
+	public VoucherPage clickOnGiftCertificate() {
+		((ProxyDriver) wd).click(giftCertificates);
+		return new VoucherPage(wd,true);
+	}
+
 
 	public ForgottenPasswordPage clickOnForgotPassword() {
 		((ProxyDriver) wd).click(forgottenPassword);

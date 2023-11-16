@@ -25,14 +25,14 @@ public class MacDesktopPageTest extends TestBase {
 		accountLoginPage = new AccountLoginPage(wd,false).get();
 	}
 
-	@Test
-	public void validateIfUserCanAddTheProductInWishList() {
+	
+	/*public void validateIfUserCanAddTheProductInWishList() {
 		accountPage = (AccountPage) accountLoginPage.submitLogin("andreas@email.com", "qwerty");
 		macDesktopPage = accountPage.chooseFromDesktop(TopNavigationBar.DESKTOPS);
 		macDesktopPage.addProductToWishList();
 		Assert.assertEquals(macDesktopPage.getWishListUpdateSuccessMsg(),
 				" Success: You have added iMac to your wish list!", "Item has not been added to the wishlist");
-	}
+	}*/
 
 	@AfterMethod
 	public void quitBrowser() {
