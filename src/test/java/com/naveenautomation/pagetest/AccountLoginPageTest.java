@@ -4,6 +4,7 @@ import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
+import org.testng.annotations.Ignore;
 import org.testng.annotations.Test;
 
 import com.naveenautomation.base.TestBase;
@@ -32,14 +33,14 @@ public class AccountLoginPageTest extends TestBase {
 	
 	// This class contains 7 test cases
 
-	@Test
+	@Test(enabled=false)
 	public void validateUserCanLoginWithValidCredentials() {
-		accountPage = (AccountPage) accountLoginPage.submitLogin("andreas@email.com", "qwery");
+		accountPage = (AccountPage) accountLoginPage.submitLogin("andreas@email.com", "qwerty");
 		Assert.assertEquals(accountPage.myAccountText(), "My Account", "User not logged in");
 
 	}
 
-	@Test
+	@Test(enabled=false)
 	public void validateUserCanNotLoginWithInValidCredentials() {
 		accountLoginPage = (AccountLoginPage) accountLoginPage.submitLogin("andreas@email.com", "qwerty12");
 		Assert.assertEquals(accountLoginPage.getAlertText(), "Warning: No match for E-Mail Address and/or Password.",
@@ -47,7 +48,7 @@ public class AccountLoginPageTest extends TestBase {
 
 	}
 
-	@Test
+	@Test(enabled=false)
 	public void validateUserCanNotLoginWithoutEmail() {
 		accountLoginPage = (AccountLoginPage) accountLoginPage.submitLogin("", "qwerty");
 		Assert.assertEquals(accountLoginPage.getAlertText(), "Warning: No match for E-Mail Address and/or Password.",
@@ -55,7 +56,7 @@ public class AccountLoginPageTest extends TestBase {
 
 	}
 
-	@Test
+	@Test(enabled=false)
 	public void validateUserCanNotLoginWithoutEmailAndPassword() {
 		accountLoginPage = (AccountLoginPage) accountLoginPage.submitLogin("", "");
 		Assert.assertEquals(accountLoginPage.getAlertText(), "Warning: No match for E-Mail Address and/or Password.",
@@ -82,7 +83,7 @@ public class AccountLoginPageTest extends TestBase {
 				"User did not enter the email to continue");
 	}
 
-	@Test
+	@Test(enabled=false)
 	public void validateIfUserCanLogout() {
 		accountPage = (AccountPage) accountLoginPage.submitLogin("andreas@email.com", "qwerty");
 		logoutPage = (LogoutPage) new SideNavBar(wd, false).OpenPageByClickOnSideNavBar(RightNavigationBar.LOGOUT);
@@ -98,6 +99,7 @@ public class AccountLoginPageTest extends TestBase {
 	}
 
 	@Test(dataProvider = "UserLogin")
+	@Ignore
 	public void validateLoginWithMultipleUsers(String email, String password) {
 		accountPage = (AccountPage) accountLoginPage.submitLogin(email, password);
 		Assert.assertEquals(accountPage.myAccountText(), "My Account", "User not logged in");

@@ -1,16 +1,13 @@
 package com.naveenautomation.pagetest;
 
-import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Test;
 
 import com.naveenautomation.base.TestBase;
 import com.naveenautomation.page.AccountLoginPage;
 import com.naveenautomation.page.AccountPage;
 import com.naveenautomation.page.MacDesktopPage;
 import com.naveenautomation.page.MonitorsPage;
-import com.naveenautomation.page.TopNavigationBar;
 
 public class MacDesktopPageTest extends TestBase {
 

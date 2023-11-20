@@ -4,9 +4,9 @@ import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+
 import com.naveenautomation.base.TestBase;
 import com.naveenautomation.page.AccountLoginPage;
-import com.naveenautomation.page.AccountPage;
 import com.naveenautomation.page.SuccessPage;
 import com.naveenautomation.page.VoucherPage;
 
@@ -21,23 +21,22 @@ public class VoucherPageTest extends TestBase {
 		initialisation();
 		accountLoginPage = new AccountLoginPage(wd, false).get();
 	}
-	
+
 	@Test
 	public void validateIfUserCanPurchaseGiftCertificate() {
 		voucherPage = accountLoginPage.clickOnGiftCertificate();
-		voucherPage.enterDetails("Andreas", "andreas@email.com", "Andreas", "andreas@email.com", "Happy Holidays", "1");
-		voucherPage.clickCheckBox();
-		successPage = (SuccessPage) voucherPage.clickSubmitBtn();
+		successPage = (SuccessPage) voucherPage.enterDetailsAndSubmit("Andreas", "andreas@email.com", "Andreas",
+				"andreas@email.com", "Happy Holidays", "1");
 		Assert.assertEquals(successPage.giftVoucherSuccessMsgText(),
-				"Thank you for purchasing a gift certificate! Once you have completed your order your gift certificate recipient will be sent an e-mail with details how to redeem their gift certificate.", "User not able to purchase Gift Certificate");
+				"Thank you for purchasing a gift certificate! Once you have completed your order your gift certificate recipient will be sent an e-mail with details how to redeem their gift certificate.",
+				"User not able to purchase Gift Certificate");
 	}
 
 	@Test
 	public void validateWarningWithInvalidRecipientName() {
 		voucherPage = accountLoginPage.clickOnGiftCertificate();
-		voucherPage.enterDetails("", "andreas@email.com", "Andreas", "andreas@email.com", "Happy Holidays", "1");
-		voucherPage.clickCheckBox();
-		voucherPage.clickSubmitBtn();
+		voucherPage.enterDetailsAndSubmit("", "andreas@email.com", "Andreas", "andreas@email.com", "Happy Holidays",
+				"1");
 		Assert.assertEquals(voucherPage.invalidrecipientsNameWarningText(),
 				"Recipient's Name must be between 1 and 64 characters!", "User not able to purchase Gift Certificate");
 	}
@@ -45,9 +44,8 @@ public class VoucherPageTest extends TestBase {
 	@Test
 	public void validateWarningWithInvalidRecipientEmail() {
 		voucherPage = accountLoginPage.clickOnGiftCertificate();
-		voucherPage.enterDetails("Andreas", "andreas@email.com", "Andreas", "andreasemail.com", "Happy Holidays", "1");
-		voucherPage.clickCheckBox();
-		voucherPage.clickSubmitBtn();
+		voucherPage.enterDetailsAndSubmit("Andreas", "andreas@email.com", "Andreas", "andreasemail.com",
+				"Happy Holidays", "1");
 		Assert.assertEquals(voucherPage.invalidrecipientsEmailWarningText(),
 				"E-Mail Address does not appear to be valid!", "User not able to purchase Gift Certificate");
 	}
@@ -55,8 +53,8 @@ public class VoucherPageTest extends TestBase {
 	@Test
 	public void validateWarningIfCheckBoxIsSkipped() {
 		voucherPage = accountLoginPage.clickOnGiftCertificate();
-		voucherPage.enterDetails("", "andreas@email.com", "Andreas", "andreas@email.com", "Happy Holidays", "1");
-		voucherPage.clickSubmitBtn();
+		voucherPage.enterDetailsAndSubmit("", "andreas@email.com", "Andreas", "andreas@email.com", "Happy Holidays",
+				"1");
 		Assert.assertEquals(voucherPage.giftCertificateWarningText(),
 				"Warning: You must agree that the gift certificates are non-refundable!",
 				"Unsuccessfull Gift Certificate Purchase");

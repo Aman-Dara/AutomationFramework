@@ -7,24 +7,25 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.events.WebDriverEventListener;
 
 import com.naveenautomation.base.TestBase;
+import com.titusfortner.logging.SeleniumLogger;
 
 public class WebdriverEvents extends TestBase implements WebDriverEventListener {
 
 	@Override
 	public void beforeAlertAccept(WebDriver driver) {
-		logger.info("Before accepting Alerts");
+		SeleniumLogger.enable("Before accepting Alerts");
 
 	}
 
 	@Override
 	public void afterAlertAccept(WebDriver driver) {
-		logger.info("Accepted Alerts");
+		SeleniumLogger.enable("Accepted Alerts");
 
 	}
 
 	@Override
 	public void afterAlertDismiss(WebDriver driver) {
-		logger.info("Dismissed Alerts");
+		SeleniumLogger.enable("Dismissed Alerts");
 
 	}
 
@@ -36,13 +37,13 @@ public class WebdriverEvents extends TestBase implements WebDriverEventListener 
 
 	@Override
 	public void beforeNavigateTo(String url, WebDriver driver) {
-		logger.info("Navigating to " + url);
+		SeleniumLogger.enable("Navigating to " + url);
 
 	}
 
 	@Override
 	public void afterNavigateTo(String url, WebDriver driver) {
-		logger.info("Navigated to " + url);
+		SeleniumLogger.enable("Navigated to " + url);
 
 	}
 
@@ -72,7 +73,7 @@ public class WebdriverEvents extends TestBase implements WebDriverEventListener 
 
 	@Override
 	public void beforeNavigateRefresh(WebDriver driver) {
-		logger.info("Page Refresh");
+		SeleniumLogger.enable("Page Refresh");
 
 	}
 
@@ -84,25 +85,25 @@ public class WebdriverEvents extends TestBase implements WebDriverEventListener 
 
 	@Override
 	public void beforeFindBy(By by, WebElement element, WebDriver driver) {
-		logger.info("Finding element using " + by);
+		SeleniumLogger.enable("Finding element using " + by);
 
 	}
 
 	@Override
 	public void afterFindBy(By by, WebElement element, WebDriver driver) {
-		logger.info("Found element using " + by);
+		SeleniumLogger.enable("Found element using " + by);
 
 	}
 
 	@Override
 	public void beforeClickOn(WebElement element, WebDriver driver) {
-		logger.info("Clicking on " + element.getText());
+		SeleniumLogger.enable("Clicking on " + element.getText());
 
 	}
 
 	@Override
 	public void afterClickOn(WebElement element, WebDriver driver) {
-		logger.info("Clicked on " +element);
+		SeleniumLogger.enable("Clicked on " +element);
 
 	}
 
@@ -162,13 +163,13 @@ public class WebdriverEvents extends TestBase implements WebDriverEventListener 
 
 	@Override
 	public void beforeGetText(WebElement element, WebDriver driver) {
-		logger.info("Getting text on " + element.getText());
+		SeleniumLogger.enable("Getting text on " + element.getText());
 
 	}
 
 	@Override
 	public void afterGetText(WebElement element, WebDriver driver, String text) {
-		logger.info("Got text on " + element.getText());
+		SeleniumLogger.enable("Got text on " + element.getText());
 
 	}
 

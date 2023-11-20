@@ -4,6 +4,7 @@ import org.testng.IRetryAnalyzer;
 import org.testng.ITestResult;
 
 import com.naveenautomation.base.TestBase;
+import com.titusfortner.logging.SeleniumLogger;
 
 public class RetryFailedTestsListener extends TestBase implements IRetryAnalyzer {
 
@@ -12,7 +13,7 @@ public class RetryFailedTestsListener extends TestBase implements IRetryAnalyzer
 
 	@Override
 	public boolean retry(ITestResult result) {
-		logger.info("Retrying failed test : " + result.getMethod().getMethodName() + "for " + cnt);
+		SeleniumLogger.enable("Retrying failed test : " + result.getMethod().getMethodName() + "for " + cnt);
 		if (cnt < maxCount) {
 			cnt++;
 			return true;

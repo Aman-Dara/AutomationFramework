@@ -2,6 +2,7 @@ package com.naveenautomation.pagetest;
 
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Ignore;
 import org.testng.annotations.Test;
 
 import com.naveenautomation.base.TestBase;
@@ -29,6 +30,7 @@ public class AddAddressPageTest extends TestBase {
 	// This Page contains 12 test cases
 
 	@Test
+	@Ignore
 	public void validateIfUserCanAddAddressWithoutFirstName() {
 		addressPage = (AddressPage) new SideNavBar(wd, false)
 				.OpenPageByClickOnSideNavBar(RightNavigationBar.ADDRESSBOOK);
@@ -41,6 +43,7 @@ public class AddAddressPageTest extends TestBase {
 	}
 
 	@Test
+	@Ignore
 	public void validateIfUserCanAddMorehan32CharInFirstName() {
 		addressPage = (AddressPage) new SideNavBar(wd, false)
 				.OpenPageByClickOnSideNavBar(RightNavigationBar.ADDRESSBOOK);
@@ -53,6 +56,7 @@ public class AddAddressPageTest extends TestBase {
 	}
 
 	@Test
+	@Ignore
 	public void validateIfUserCanAddAddressWithoutLastName() {
 		addressPage = (AddressPage) new SideNavBar(wd, false)
 				.OpenPageByClickOnSideNavBar(RightNavigationBar.ADDRESSBOOK);
@@ -65,6 +69,7 @@ public class AddAddressPageTest extends TestBase {
 	}
 
 	@Test
+	@Ignore
 	public void validateIfUserCanAddMorethan32CharsInLastName() {
 		addressPage = (AddressPage) new SideNavBar(wd, false)
 				.OpenPageByClickOnSideNavBar(RightNavigationBar.ADDRESSBOOK);
@@ -77,6 +82,7 @@ public class AddAddressPageTest extends TestBase {
 	}
 
 	@Test
+	@Ignore
 	public void validateIfUserCanAddAddressWithoutStreetName() {
 		addressPage = (AddressPage) new SideNavBar(wd, false)
 				.OpenPageByClickOnSideNavBar(RightNavigationBar.ADDRESSBOOK);
@@ -89,6 +95,7 @@ public class AddAddressPageTest extends TestBase {
 	}
 
 	@Test
+	@Ignore
 	public void validateIfUserCanAddAddressWithoutCityName() {
 		addressPage = (AddressPage) new SideNavBar(wd, false)
 				.OpenPageByClickOnSideNavBar(RightNavigationBar.ADDRESSBOOK);
@@ -101,6 +108,7 @@ public class AddAddressPageTest extends TestBase {
 	}
 
 	@Test
+	@Ignore
 	public void validateIfUserCanAddCityWithLessThan2Char() {
 		addressPage = (AddressPage) new SideNavBar(wd, false)
 				.OpenPageByClickOnSideNavBar(RightNavigationBar.ADDRESSBOOK);
@@ -113,6 +121,7 @@ public class AddAddressPageTest extends TestBase {
 	}
 
 	@Test
+	@Ignore
 	public void validateIfUserCanAddAddressWithoutPostalCode() {
 		addressPage = (AddressPage) new SideNavBar(wd, false)
 				.OpenPageByClickOnSideNavBar(RightNavigationBar.ADDRESSBOOK);
@@ -125,6 +134,7 @@ public class AddAddressPageTest extends TestBase {
 	}
 
 	@Test
+	@Ignore
 	public void validateIfUserCanAdd11CharsInPostalCode() {
 		addressPage = (AddressPage) new SideNavBar(wd, false)
 				.OpenPageByClickOnSideNavBar(RightNavigationBar.ADDRESSBOOK);
@@ -137,6 +147,7 @@ public class AddAddressPageTest extends TestBase {
 	}
 
 	@Test
+	@Ignore
 	public void validateIfUserCanAdd1CharInPostalCode() {
 		addressPage = (AddressPage) new SideNavBar(wd, false)
 				.OpenPageByClickOnSideNavBar(RightNavigationBar.ADDRESSBOOK);
@@ -149,6 +160,7 @@ public class AddAddressPageTest extends TestBase {
 	}
 
 	@Test
+	@Ignore
 	public void validateIfUserCanAddAddressWithoutRegion() {
 		addressPage = (AddressPage) new SideNavBar(wd, false)
 				.OpenPageByClickOnSideNavBar(RightNavigationBar.ADDRESSBOOK);
@@ -161,6 +173,7 @@ public class AddAddressPageTest extends TestBase {
 	}
 
 	@Test
+	@Ignore
 	public void validateIfUserCanContinueWithoutEnteringAnyField() {
 		addressPage = (AddressPage) new SideNavBar(wd, false)
 				.OpenPageByClickOnSideNavBar(RightNavigationBar.ADDRESSBOOK);

@@ -5,30 +5,31 @@ import org.testng.ITestListener;
 import org.testng.ITestResult;
 
 import com.naveenautomation.base.TestBase;
+import com.titusfortner.logging.SeleniumLogger;
 
 public class CustomListener extends TestBase implements ITestListener {
 
 	@Override
 	public void onTestStart(ITestResult result) {
-		logger.info("**********************Test Case started: " + result.getMethod().getMethodName()
+		SeleniumLogger.enable("**********************Test Case started: " + result.getMethod().getMethodName()
 				+ "****************************");
 	}
 
 	@Override
 	public void onTestSuccess(ITestResult result) {
-		logger.info("**********************Test Case Passed: " + result.getMethod().getMethodName()
+		SeleniumLogger.enable("**********************Test Case Passed: " + result.getMethod().getMethodName()
 				+ "****************************");
 	}
 
 	@Override
 	public void onTestFailure(ITestResult result) {
-		logger.info("!!!!!!!!!!!!!!Test Case Fail: " + result.getMethod().getMethodName() + " Taking Screenshot!!!!!!!!!!!!!!!!!!!!");
+		SeleniumLogger.enable("!!!!!!!!!!!!!!Test Case Fail: " + result.getMethod().getMethodName() + " Taking Screenshot!!!!!!!!!!!!!!!!!!!!");
 		Utils.takeFailedTestScreenShot(result.getMethod().getMethodName());
 	}
 
 	@Override
 	public void onTestSkipped(ITestResult result) {
-		logger.info("??????????????????Test Case skipped: " + result.getMethod().getMethodName() + "????????????????");
+		SeleniumLogger.enable("??????????????????Test Case skipped: " + result.getMethod().getMethodName() + "????????????????");
 	}
 
 	@Override

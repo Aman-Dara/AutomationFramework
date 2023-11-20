@@ -66,16 +66,8 @@ public class VoucherPage extends Page {
 		((ProxyDriver) wd).sendKeys(amount, enterAmount);
 	}
 
-	public void clickCheckBox() {
-		((ProxyDriver) wd).click(checkbox);
-	}
 
-	public GeneralPage clickSubmitBtn() {
-		((ProxyDriver) wd).click(submitBtn);
-		return this.waitForPageToLoad(SuccessPage.class,VoucherPage.class);
-	}
-
-	public void enterDetails(String recipientName, String recipientEmail, String name, String email, String msg, String amount) {
+	public GeneralPage enterDetailsAndSubmit(String recipientName, String recipientEmail, String name, String email, String msg, String amount) {
 		enterRecipientsName(recipientName);
 		enterRecipientsEmail(recipientEmail);
 		enterYourName(name);
@@ -83,8 +75,12 @@ public class VoucherPage extends Page {
 		clickGiftTheme();
 		enterGiftMessage(msg);
 		enterGiftAmount(amount);
+		((ProxyDriver) wd).click(checkbox);
+		((ProxyDriver) wd).click(submitBtn);
+		return this.waitForPageToLoad(SuccessPage.class,VoucherPage.class);
 
 	}
+
 
 	@Override
 	protected void isLoaded() {

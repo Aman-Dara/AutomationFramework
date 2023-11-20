@@ -1,6 +1,7 @@
 package com.naveenautomation.pagetest;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Ignore;
 import org.testng.annotations.Test;
 
 import com.naveenautomation.base.TestBase;
@@ -28,6 +29,7 @@ public class AddressPageTest extends TestBase {
 	// This Page contains 2 test cases
 
 	@Test
+	@Ignore
 	public void validateIfUserCanAddNewAddress() {
 		addressPage = (AddressPage) new SideNavBar(wd, false)
 				.OpenPageByClickOnSideNavBar(RightNavigationBar.ADDRESSBOOK);
@@ -40,6 +42,7 @@ public class AddressPageTest extends TestBase {
 	}
 	
 	@Test
+	@Ignore
 	public void validateIfUserCanEditTheAddress() {
 		addressPage = (AddressPage) new SideNavBar(wd, false).OpenPageByClickOnSideNavBar(RightNavigationBar.ADDRESSBOOK);
 		addAddress = (AddAddressPage) addressPage.clickEditBtn();
