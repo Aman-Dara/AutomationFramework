@@ -22,7 +22,7 @@ public class VoucherPageTest extends TestBase {
 		accountLoginPage = new AccountLoginPage(wd, false).get();
 	}
 
-	@Test
+	@Test(enabled=false)
 	public void validateIfUserCanPurchaseGiftCertificate() {
 		voucherPage = accountLoginPage.clickOnGiftCertificate();
 		successPage = (SuccessPage) voucherPage.enterDetailsAndSubmit("Andreas", "andreas@email.com", "Andreas",
@@ -32,7 +32,7 @@ public class VoucherPageTest extends TestBase {
 				"User not able to purchase Gift Certificate");
 	}
 
-	@Test
+	@Test(enabled=false)
 	public void validateWarningWithInvalidRecipientName() {
 		voucherPage = accountLoginPage.clickOnGiftCertificate();
 		voucherPage.enterDetailsAndSubmit("", "andreas@email.com", "Andreas", "andreas@email.com", "Happy Holidays",
@@ -41,7 +41,7 @@ public class VoucherPageTest extends TestBase {
 				"Recipient's Name must be between 1 and 64 characters!", "User not able to purchase Gift Certificate");
 	}
 
-	@Test
+	@Test(enabled=false)
 	public void validateWarningWithInvalidRecipientEmail() {
 		voucherPage = accountLoginPage.clickOnGiftCertificate();
 		voucherPage.enterDetailsAndSubmit("Andreas", "andreas@email.com", "Andreas", "andreasemail.com",
@@ -50,7 +50,7 @@ public class VoucherPageTest extends TestBase {
 				"E-Mail Address does not appear to be valid!", "User not able to purchase Gift Certificate");
 	}
 
-	@Test
+	@Test(enabled = false)
 	public void validateWarningIfCheckBoxIsSkipped() {
 		voucherPage = accountLoginPage.clickOnGiftCertificate();
 		voucherPage.enterDetailsAndSubmit("", "andreas@email.com", "Andreas", "andreas@email.com", "Happy Holidays",

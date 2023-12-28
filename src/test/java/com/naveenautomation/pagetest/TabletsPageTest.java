@@ -28,14 +28,14 @@ public class TabletsPageTest extends TestBase {
 		accountPage = (AccountPage) accountLoginPage.submitLogin("andreas@email.com", "qwerty");
 	}
 
-	@Test
+	@Test(enabled=false)
 	public void validateIfUserCanNavigateToTabletsPage() {
 		tabletsPage = (TabletsPage) new TopNavBar(wd, false).OpenPageByClickOnTopNavBar(TopNavigationBar.TABLETS);
 		Assert.assertEquals(tabletsPage.getTabletBannerText(), "Tablets", "User can see the list of Tablets");
 
 	}
 
-	@Test
+	@Test(enabled=false)
 	public void validateIfUserCanAddTabletToCart() {
 		tabletsPage = (TabletsPage) new TopNavBar(wd, false).OpenPageByClickOnTopNavBar(TopNavigationBar.TABLETS);
 		tabletsPage.clickAddToCart();

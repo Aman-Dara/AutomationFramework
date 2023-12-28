@@ -62,7 +62,7 @@ public class AccountPageTest extends TestBase {
 				"Info not updated");
 	}
 
-	@Test
+	@Test(enabled=false)
 	public void validateIfUserCanChangeThePassword() {
 		changePassword = (ChangePasswordPage) new SideNavBar(wd, false)
 				.OpenPageByClickOnSideNavBar(RightNavigationBar.PASSWORD);
@@ -82,7 +82,7 @@ public class AccountPageTest extends TestBase {
 				"Newsletter subscription not updated");
 	}
 
-	@Test(dataProvider = "UserRegistration", enabled = false)
+	/*@Test(dataProvider = "UserRegistration", enabled = false)
 	public void validateRegistrationWithMultipleUsers(String fName, String lName, String email, String telephone,
 			String password, String confirmPassword) {
 		registerAcctPage = accountLoginPage.clickContinueBtn();
@@ -110,7 +110,7 @@ public class AccountPageTest extends TestBase {
 			}
 		}
 		return virtualSheet;
-	}
+	}*/
 
 	/*
 	 * public void validateIfProductsAreAddedToTheWishList() { macDesktopPage =

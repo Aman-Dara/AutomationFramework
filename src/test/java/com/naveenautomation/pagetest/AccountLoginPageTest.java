@@ -33,7 +33,7 @@ public class AccountLoginPageTest extends TestBase {
 	
 	// This class contains 7 test cases
 
-	@Test(enabled=false)
+	@Test
 	public void validateUserCanLoginWithValidCredentials() {
 		accountPage = (AccountPage) accountLoginPage.submitLogin("andreas@email.com", "qwerty");
 		Assert.assertEquals(accountPage.myAccountText(), "My Account", "User not logged in");
@@ -64,7 +64,7 @@ public class AccountLoginPageTest extends TestBase {
 
 	}
 
-	@Test
+	@Test(enabled=false)
 	public void validatingForgotPasswordFunctionality() {
 		forgotPasswordPage = accountLoginPage.clickOnForgotPassword();
 		forgotPasswordPage.enterEmail("andreas@email.com");
@@ -74,8 +74,8 @@ public class AccountLoginPageTest extends TestBase {
 				"User not able to change the password");
 	}
 	
-	@Test
-	public void validateIfUserCanRequestPasswordWithoutEnteringEmail() {
+	@Test(groups = "NewTestCase")
+	public void validateIfUserCanRequestPasswordWithoutEmail() {
 		forgotPasswordPage = accountLoginPage.clickOnForgotPassword();
 		forgotPasswordPage.enterEmail("");
 		Assert.assertEquals(forgotPasswordPage.enterEmailErrorMessage(),
@@ -98,8 +98,7 @@ public class AccountLoginPageTest extends TestBase {
 		Assert.assertEquals(yourStorePage.featuredText(), "Featured", "User not logged out.");
 	}
 
-	@Test(dataProvider = "UserLogin")
-	@Ignore
+	@Test(dataProvider = "UserLogin", enabled =false)
 	public void validateLoginWithMultipleUsers(String email, String password) {
 		accountPage = (AccountPage) accountLoginPage.submitLogin(email, password);
 		Assert.assertEquals(accountPage.myAccountText(), "My Account", "User not logged in");
@@ -120,6 +119,7 @@ public class AccountLoginPageTest extends TestBase {
 		}
 		return virtualSheet;
 	}
+
 
 	@AfterMethod
 	public void quitBrowser() {

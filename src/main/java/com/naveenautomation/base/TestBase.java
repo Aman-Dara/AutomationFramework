@@ -21,26 +21,25 @@ public class TestBase {
 
 	public static WebDriver wd;
 	private final Browser DEFAULT_BROWSER = Browser.CHROME;
+	// public String browserType = System.getProperty("Browser");
+
 	private final Environment URL = Environment.PROD;
 	private static final boolean RUN_ON_GRID = false;
-
-	//protected SeleniumLogger logger;
-	public static Logger logger;
+	// public static Logger logger;
 
 	@BeforeClass
 	public void loggerSteup() {
-		/*SeleniumLogger.enable();
-		logger = new SeleniumLogger();
-		logger.setLevel(Level.INFO);*/
-		
-		logger = Logger.getLogger(TestBase.class);
-		PropertyConfigurator.configure("log4j.properties");
-		BasicConfigurator.configure();
-	//	logger.setLevel(Level.INFO);
+
+		/*
+		 * logger = Logger.getLogger(TestBase.class);
+		 * PropertyConfigurator.configure("log4j.properties");
+		 * BasicConfigurator.configure(); // logger.setLevel(Level.INFO);
+		 */
 
 	}
 
 	public void initialisation() {
+		// String browser = System.getProperty("browser");
 		if (RUN_ON_GRID) {
 			try {
 				wd = new RemoteWebDriver(new URL("http://10.0.0.183:4444"), getOptions());
@@ -50,13 +49,17 @@ public class TestBase {
 			}
 		} else {
 
+			// switch(browser.toLowerCase()) {
 			switch (DEFAULT_BROWSER) {
+			// case "chrome":
 			case CHROME:
 				wd = new ProxyDriver(new ChromeDriver());
 				break;
+			// case "edge":
 			case EDGE:
 				wd = new ProxyDriver(new EdgeDriver());
 				break;
+			// case "firefox":
 			case FIREFOX:
 				wd = new ProxyDriver(new FirefoxDriver());
 				break;
